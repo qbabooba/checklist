@@ -175,6 +175,22 @@ export default class Checklist {
       this.toggleCheckbox(event);
     });
 
+    // Create a button element
+    const logStatusButton = document.createElement('button');
+    logStatusButton.textContent = 'Log Checklist Status';
+
+    // Append the button to the wrapper
+    this._elements.wrapper.appendChild(logStatusButton);
+
+    // Add click event listener to the button
+    logStatusButton.addEventListener('click', () => {
+      this._elements.items.forEach((item, index) => {
+        const isChecked = item.querySelector('input').checked;
+        console.log(`Item ${index + 1}: ${isChecked ? 'Checked' : 'Unchecked'}`);
+      });
+    });
+
+
     return this._elements.wrapper;
   }
 
